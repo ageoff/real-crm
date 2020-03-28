@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux'
+import configureStore from './redux/store'
+import Router from './lib/NavRouter'
+
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
+
+const { store } = configureStore('testing', () => {})
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Router history={history} />
+  </Provider>,
   document.getElementById('root')
 );
 
