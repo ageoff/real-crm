@@ -22,6 +22,8 @@ const getStatusColor = (status) => {
 const columns = [
 	{ title: 'First Name', dataIndex: 'first', key: 'first' },
 	{ title: 'Last Name', dataIndex: 'last', key: 'last' },
+	{ title: 'Phone', dataIndex: 'phone', key: 'phone' },
+	{ title: 'Email', dataIndex: 'email', key: 'email' },
 	{ title: 'Status', dataIndex: 'status', key: 'status', render: s => {
 		console.log(s)
 		return <span><Tag color={getStatusColor(s)}>{s}</Tag></span>
@@ -47,8 +49,8 @@ const Clients = () => {
 	console.log(history)
 
 	useEffect(() => {
-		if (clients.length === 0) dispatch(loadClients())
-	})
+		dispatch(loadClients())
+	}, [ dispatch ])
 
 	return (
 		<div>

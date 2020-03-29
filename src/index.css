@@ -17,13 +17,13 @@ code {
 .body {
   width: 100%;
   min-height: 100vh;
-  background-color: @grey-5;
+  background-color: #f0f2f5;
 }
 .scrollContent {
   overflow: auto;
   height: 100%;
-  padding: 10px;
-  margin: 5px;
+  padding: 15px;
+  background-color: #f0f2f5;
 }
 .mainContent {
   height: calc(100% - 64px);
@@ -55,6 +55,6 @@ code {
 }
 .sideNav {
   height: 100%;
-  background: #f0f2f5 !important;
-  background-color: #f0f2f5 !important;
+  background: #fff !important;
+  background-color: #ff !important;
 }

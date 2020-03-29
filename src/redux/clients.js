@@ -28,9 +28,9 @@ export const loadClients = () => (dispatch, getState) => {
 	const load = async () => {
 		await sleep(5000)
 		dispatch(setClients([
-			{ id: 1, first: 'Joe', last: 'Smith', status: 'Searching' },
-			{ id: 2, first: 'Jane', last: 'Doe', status: 'Under Contract' },
-			{ id: 3, first: 'Will', last: 'Press', status: 'Placed' },
+			{ id: 1, first: 'Joe', last: 'Smith', phone: '9131231234', email: 'joe@gmail.com', address: '123 W Street st. Olathe, KS 66061', status: 'Searching' },
+			{ id: 2, first: 'Jane', last: 'Doe', phone: '9133213322', email: 'jane.smith@gmail.com', address: '123 W Street st. Olathe, KS 66061', status: 'Under Contract' },
+			{ id: 3, first: 'Will', last: 'Press', phone: '9134565544', email: 'will.p@gmail.com', address: '123 W Street st. Olathe, KS 66061', status: 'Placed' },
 		]))
 		dispatch(setLoadingClients(false))
 	}

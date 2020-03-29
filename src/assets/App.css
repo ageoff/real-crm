@@ -67,3 +67,14 @@
     transform: rotate(360deg);
   }
 }
+
+.profileName {
+  margin-bottom: 4px;
+  color: rgba(0,0,0,.85);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
+.profileDetails {
+  text-align: left;
+}
