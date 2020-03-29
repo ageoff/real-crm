@@ -3,10 +3,10 @@ import '../assets/App.css'
 import { geekblue, volcano, green, yellow } from '@ant-design/colors'
 import { useSelector, useDispatch } from 'react-redux'
 import { loadClients } from '../redux/clients'
-import { Button, Table, Tag } from 'antd'
+import { Button, Table, Tag, PageHeader } from 'antd'
+import { useHistory } from 'react-router-dom'
 
 const getStatusColor = (status) => {
-	console.log(green)
 	switch (status) {
 	case 'Searching':
 		return volcano.primary
@@ -28,10 +28,23 @@ const columns = [
 	} },
 ]
 
+const routes = [
+	{
+		path: '',
+		breadcrumbName: 'Home',
+	},
+	{
+		path: 'clients',
+		breadcrumbName: 'Clients',
+	},
+]
+
 const Clients = () => {
 	const loading = useSelector(state => state.clients.loadingClients)
 	const clients = useSelector(state => state.clients.clients)
 	const dispatch = useDispatch()
+	const history = useHistory()
+	console.log(history)
 
 	useEffect(() => {
 		if (clients.length === 0) dispatch(loadClients())
@@ -39,16 +52,26 @@ const Clients = () => {
 
 	return (
 		<div>
-			<h1>Clients</h1>
+			<PageHeader
+				className="site-page-header"
+				breadcrumb={{ routes }}
+				title="Clients"
+			/>
 			<Button onClick={() => dispatch(loadClients())}>Refresh</Button>
 			<Table
 				loading={loading}
 				columns={columns}
 				dataSource={clients}
 				rowKey={(record) => (record.first + record.last)}
-				expandable={{
-					expandedRowRender: record => <p>{record.first} {record.last}</p>,
-				}}
+				onRow={(record, index) => ({
+					onClick: event => {
+						// dispatch(setSelectedClient(record))
+						history.push({
+							pathname: 'clientdetails',
+							search: '?id=' + record.id,
+						})
+					},
+				})}
 				pagination={false} />
 		</div>
 	)

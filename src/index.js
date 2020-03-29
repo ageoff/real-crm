@@ -18,7 +18,7 @@ const { store, persistor } = configureStore('testing', () => {})
 
 const onBeforeLift = async () => {
 	const sleep = (ms) => (new Promise(resolve => setTimeout(resolve, ms)))
-	await sleep(5000)
+	await sleep(1000)
 }
 
 ReactDOM.render(

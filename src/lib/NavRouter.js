@@ -10,6 +10,7 @@ import Login from '../containers/Login'
 
 import Home from '../containers/Home'
 import Clients from '../containers/Clients'
+import ClientDetails from '../containers/ClientDetails'
 import MyEstates from '../containers/MyEstates'
 import Reporting from '../containers/Reporting'
 import AccountSettings from '../containers/AccountSettings'
@@ -63,6 +64,7 @@ const NavRouter = ({ history, authenticated }) => (
 						<ProtectedRoute path="/myestates" component={MyEstates} authenticated={authenticated} />
 						<ProtectedRoute path="/reporting" component={Reporting} authenticated={authenticated} />
 						<ProtectedRoute path="/account" component={AccountSettings} authenticated={authenticated} />
+						<ProtectedRoute path="/clientdetails" component={ClientDetails} authenticated={authenticated} />
 						<Route path="/login" component={Login} />
 						<Route component={PageNotFound}/>
 					</Switch>
