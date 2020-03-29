@@ -16,65 +16,63 @@ import AccountSettings from '../containers/AccountSettings'
 
 import PageNotFound from '../containers/PageNotFound'
 
-import '../index.css'
+import '../index.less'
 
 const ProtectedRoute = ({ component, authenticated, ...rest }) => {
-  const ChildComponent = component
-  return (<Route
-      {...rest}
-      render={({ location }) =>
-        authenticated ? (
-          <ChildComponent />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location }
-            }}
-          />
-        )
-      }
-    />
-  )
+	const ChildComponent = component
+	return (<Route
+		{...rest}
+		render={({ location }) =>
+			authenticated ? (
+				<ChildComponent />
+			) : (
+				<Redirect
+					to={{
+						pathname: '/login',
+						state: { from: location },
+					}}
+				/>
+			)
+		}
+	/>
+	)
 }
 
-const NavRouter = ({ history, authenticated }) => {
-  return (
-    <Router history={history}>
-      <Row type='flex'>
-        <Col span={24} className='header'>
-          <div className='innerHeader'>
-            <img src={require('../assets/topLogo.svg')} alt='mystuff' className='topHeaderLogo' />
-            <HeaderUtil />
-          </div>
-        </Col>
-      </Row>
-      <Row type='flex' className='mainContent'>
-        {authenticated && <Col span={3}>
-          <SideNav />
-        </Col>}
-        <Col span={authenticated ? 21 : 24}>
-          <div className='scrollContent'>
-            <Switch>
-              <Route exact path="/">
-              {!authenticated ? <Landing /> : <Redirect to='/home' />}
-              </Route>
-              <ProtectedRoute path="/home" component={Home} authenticated={authenticated} />
-              <ProtectedRoute path="/clients" component={Clients} authenticated={authenticated} />
-              <ProtectedRoute path="/myestates" component={MyEstates} authenticated={authenticated} />
-              <ProtectedRoute path="/reporting" component={Reporting} authenticated={authenticated} />
-              <ProtectedRoute path="/account" component={AccountSettings} authenticated={authenticated} />
-              <Route path='/login' component={Login} />
-              <Route component={PageNotFound}/>
-            </Switch>
-          </div>
-        </Col>
-      </Row>
-    </Router>
-  )
-}
+const NavRouter = ({ history, authenticated }) => (
+	<Router history={history}>
+		<Row type="flex">
+			<Col span={24} className="header">
+				<div className="innerHeader">
+					<img src={require('../assets/topLogo.svg')} alt="mystuff" className="topHeaderLogo" />
+					<HeaderUtil />
+				</div>
+			</Col>
+		</Row>
+		<Row type="flex" className="mainContent">
+			{authenticated && <Col span={3}>
+				<SideNav />
+			</Col>}
+			<Col span={authenticated ? 21 : 24}>
+				<div className="scrollContent">
+					<Switch>
+						<Route exact path="/">
+							{!authenticated ? <Landing /> : <Redirect to="/home" />}
+						</Route>
+						<ProtectedRoute path="/home" component={Home} authenticated={authenticated} />
+						<ProtectedRoute path="/clients" component={Clients} authenticated={authenticated} />
+						<ProtectedRoute path="/myestates" component={MyEstates} authenticated={authenticated} />
+						<ProtectedRoute path="/reporting" component={Reporting} authenticated={authenticated} />
+						<ProtectedRoute path="/account" component={AccountSettings} authenticated={authenticated} />
+						<Route path="/login" component={Login} />
+						<Route component={PageNotFound}/>
+					</Switch>
+				</div>
+			</Col>
+		</Row>
+	</Router>
+)
 const mapStateToProps = state => ({
-  authenticated: state.user.loggedIn
+	authenticated: state.user.loggedIn,
 })
 const mapDispatchToProps = dispatch => ({
 

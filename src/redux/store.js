@@ -6,35 +6,38 @@ import thunk from 'redux-thunk'
 
 // Reducers
 import user from './user'
+import clients from './clients'
 
 const encryptor = createEncryptor({
-  secretKey: 'spot-lager-extra',
+	secretKey: 'spot-lager-extra',
 })
 
 const config = {
-  key: 'root',
-  transforms: [encryptor],
-  storage,
+	key: 'root',
+	transforms: [ encryptor ],
+	storage,
 }
 
 const reducers = persistCombineReducers(config, {
-  user,
+	user,
+	clients,
 })
 
 const configureStore = (env, callback) => {
-  const middleware = [thunk]
+	const middleware = [ thunk ]
 
-  const con = {}
+	const con = {}
 
-  if (env !== 'production') {
-    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-    con.store = createStore(reducers, composeEnhancers(applyMiddleware(...middleware)))
-  } else {
-    con.store = createStore(reducers, applyMiddleware(...middleware))
-  }
+	if (env !== 'production') {
+		const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+		con.store = createStore(reducers, composeEnhancers(applyMiddleware(...middleware)))
+	}
+	else {
+		con.store = createStore(reducers, applyMiddleware(...middleware))
+	}
 
-  con.persistor = persistStore(con.store, null, callback)
-  return con
+	con.persistor = persistStore(con.store, null, callback)
+	return con
 }
 
 export default configureStore
