@@ -2,13 +2,14 @@ import React, { useEffect } from 'react'
 import '../assets/App.css'
 import { geekblue, volcano, green, yellow } from '@ant-design/colors'
 import { useSelector, useDispatch } from 'react-redux'
-import { setSelectedClient, loadClient } from '../redux/clients'
-import { Timeline, Button, Form, Layout, PageHeader, Spin, Result, Card, Row, Col, Divider, Tabs, Tag, Input } from 'antd'
-import { useHistory, useLocation, Link } from 'react-router-dom'
+import { loadClient } from '../redux/clients'
+import { Layout, PageHeader, Spin, Result, Card, Row, Col, Divider, Tabs, Tag } from 'antd'
+import { useLocation, Link } from 'react-router-dom'
 import { MailOutlined, PhoneOutlined, EnvironmentOutlined, InfoCircleOutlined } from '@ant-design/icons'
+import Activities from '../components/Activities'
+import Notes from '../components/Notes'
 
 const { TabPane } = Tabs
-const { TextArea } = Input
 
 const getStatusColor = (status) => {
 	switch (status) {
@@ -56,13 +57,12 @@ const Clients = () => {
 	const client = useSelector(state => state.clients.selectedClient)
 	const loading = useSelector(state => state.clients.loadingClient)
 	const dispatch = useDispatch()
-	const history = useHistory()
 	const location = useLocation()
+	const { id } = parseQueryString(location)
 
 	useEffect(() => {
-		const params = parseQueryString(location)
-		dispatch(loadClient(Number(params.id)))
-	}, [ dispatch, location ])
+		dispatch(loadClient(Number(id)))
+	}, [ dispatch, id ])
 
 	if (loading) return <Spin size="large"/>
 	if (client == null) return <Result status="404" title="404" subTitle="Sorry, the client was not found." />
@@ -93,26 +93,10 @@ const Clients = () => {
 					<Card>
 						<Tabs>
 							<TabPane tab="Activity" key="1">
-								<p>Activity Goes Here</p>
-								<Timeline>
-									<Timeline.Item>2015-09-01: Client met</Timeline.Item>
-									<Timeline.Item>Called Client 2015-09-01</Timeline.Item>
-									<Timeline.Item>Visited this house 2015-09-01</Timeline.Item>
-									<Timeline.Item>Wants to make an offer on this house 2015-09-01</Timeline.Item>
-								</Timeline>
+								<Activities id={id} />
 							</TabPane>
 							<TabPane tab="Notes" key="2">
-								<p>Notes Goes Here</p>
-								<div>
-									<Form.Item>
-										<TextArea rows={4} onChange={()=>{}} value={''} />
-									</Form.Item>
-									<Form.Item>
-										<Button htmlType="submit" loading={false} onClick={()=>{}} type="primary">
-											Add Comment
-										</Button>
-									</Form.Item>
-								</div>
+								<Notes id={id} />
 							</TabPane>
 						</Tabs>
 					</Card>
