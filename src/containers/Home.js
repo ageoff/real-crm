@@ -4,8 +4,9 @@ import '../assets/App.css';
 import { connect } from 'react-redux'
 import { setLoggedIn } from '../redux/user'
 import { useHistory } from 'react-router-dom'
+import { Layout } from 'antd'
 
-const Foo = ({ logout }) => {
+const Home = ({ logout }) => {
   let history = useHistory()
   const doLogout = () => {
     logout(false)
@@ -13,7 +14,7 @@ const Foo = ({ logout }) => {
   }
   return (
 
-    <div >
+    <Layout >
       <img src={logo} className="App-logo" alt="logo" />
       <p>
         FOOOOOOO <code>src/App.js</code> and save to reload.
@@ -24,7 +25,7 @@ const Foo = ({ logout }) => {
       >
         Logout
       </button>
-    </div>
+    </Layout>
 
   );
 }
@@ -32,4 +33,4 @@ const mapStateToProps = state => ({})
 const mapDispatchToProps = dispatch => ({
   logout: val => dispatch(setLoggedIn(val))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Foo)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

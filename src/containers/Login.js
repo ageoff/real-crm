@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../assets/logo.svg';
 import '../assets/App.css';
 import { connect } from 'react-redux'
 import { setLoggedIn } from '../redux/user'

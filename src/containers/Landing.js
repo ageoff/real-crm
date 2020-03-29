@@ -4,7 +4,7 @@ import '../assets/App.css';
 
 import { Card, Col, Row } from 'antd';
 
-const App = () => (
+const Landing = () => (
   <div>
     <Row className='homeWrapper' gutter={16}>
       <Col span={24} ><img src={logo} className='App-logo' alt='logo' /></Col>
@@ -22,4 +22,4 @@ const App = () => (
   </div>
 )
 
-export default App;
+export default Landing;

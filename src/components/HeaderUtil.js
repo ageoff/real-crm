@@ -24,19 +24,17 @@ const HeaderUtil = ({ authenticated, doLogin }) => {
 			onFinish={onFinish}
 			onFinishFailed={onFinishFailed}>
 			<Form.Item
-				label="Username"
 				name="username"
 				rules={[{ required: true, message: 'Please input your username!' }]}
 				style={{ color: 'white' }}
 				>
-				<Input />
+				<Input placeholder="Username" />
 			</Form.Item>
 			<Form.Item
-				label="Password"
 				name="password"
 				rules={[{ required: true, message: 'Please input your password!' }]}
 				>
-				<Input.Password />
+				<Input.Password placeholder="Password" />
 			</Form.Item>
 			<Form.Item >
 				<Button type="primary" htmlType="submit">

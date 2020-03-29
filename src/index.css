@@ -18,6 +18,7 @@ code {
 }
 .scrollContent {
   overflow: auto;
+  min-height: 100vh;
 }
 
 .header {
