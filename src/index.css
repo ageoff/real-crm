@@ -11,6 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#root {
+  height: 100%
+}
 .body {
   width: 100%;
   min-height: 100vh;
@@ -18,7 +21,10 @@ code {
 }
 .scrollContent {
   overflow: auto;
-  min-height: 100vh;
+}
+.mainContent {
+  height: calc(100% - 64px);
+  overflow: hidden;
 }
 
 .header {
@@ -45,6 +51,7 @@ code {
   vertical-align: middle;
 }
 .sideNav {
-  background-color: red;
-  min-height: 100vh;
+  height: 100%;
+  background: #fafafa !important;
+  background-color: #fafafa !important;
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { setLoggedIn } from '../redux/user'
 import { Form, Input, Button } from 'antd'
 import { useLocation, useHistory } from 'react-router-dom'
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 const HeaderUtil = ({ authenticated, doLogin }) => {
 	let history = useHistory();
@@ -28,13 +29,13 @@ const HeaderUtil = ({ authenticated, doLogin }) => {
 				rules={[{ required: true, message: 'Please input your username!' }]}
 				style={{ color: 'white' }}
 				>
-				<Input placeholder="Username" />
+				<Input prefix={<UserOutlined />} placeholder="Username" />
 			</Form.Item>
 			<Form.Item
 				name="password"
 				rules={[{ required: true, message: 'Please input your password!' }]}
 				>
-				<Input.Password placeholder="Password" />
+				<Input.Password prefix={<LockOutlined />} placeholder="Password" />
 			</Form.Item>
 			<Form.Item >
 				<Button type="primary" htmlType="submit">

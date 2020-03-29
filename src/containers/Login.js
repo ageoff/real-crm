@@ -5,6 +5,7 @@ import { setLoggedIn } from '../redux/user'
 
 import { Form, Input, Button, Checkbox, Layout } from 'antd';
 import { useHistory, useLocation } from 'react-router-dom';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 const layout = {
   labelCol: { span: 8 },
@@ -43,14 +44,14 @@ const Login = ({ doLogin }) => {
           name="username"
           rules={[{ required: true, message: 'Please input your username!' }]}
           >
-          <Input />
+          <Input prefix={<UserOutlined />} />
         </Form.Item>
         <Form.Item
           label="Password"
           name="password"
           rules={[{ required: true, message: 'Please input your password!' }]}
           >
-          <Input.Password />
+          <Input.Password prefix={<LockOutlined />} />
         </Form.Item>
         <Form.Item {...tailLayout} name="remember" valuePropName="checked">
           <Checkbox>Remember me</Checkbox>
