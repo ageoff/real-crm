@@ -1,5 +1,5 @@
 import React from 'react'
-import '../index.less'
+import '../index.css'
 import { Layout, Spin, Row, Col } from 'antd'
 
 const LoadingPage = () => (

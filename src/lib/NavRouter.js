@@ -16,7 +16,7 @@ import AccountSettings from '../containers/AccountSettings'
 
 import PageNotFound from '../containers/PageNotFound'
 
-import '../index.less'
+import '../index.css'
 
 const ProtectedRoute = ({ component, authenticated, ...rest }) => {
 	const ChildComponent = component

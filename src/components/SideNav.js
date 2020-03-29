@@ -1,7 +1,7 @@
 import React from 'react'
 import { Menu } from 'antd'
 import { useHistory } from 'react-router-dom'
-import '../index.less'
+import '../index.css'
 import { connect } from 'react-redux'
 import { setLoggedIn } from '../redux/user'
 
