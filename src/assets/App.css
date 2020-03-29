@@ -1,5 +1,37 @@
 .App {
   text-align: center;
+  flex-direction: column;
+  width: 100%;
+}
+.bodyWrapper {
+  width: 100%;
+  flex-direction: row;
+}
+.content {
+  width: 100%;
+  background-color: #282c34;
+  min-height: 100vh;
+}
+.homeWrapper {
+  background-color: #282c34;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.homeWrapperWhite {
+  background-color: white;
+  color: #001529;
+  padding: 20px;
+}
+.loginForm {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-logo {

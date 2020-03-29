@@ -12,20 +12,20 @@ const Foo = ({ logout }) => {
     history.push('/')
   }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          FOOOOOOO <code>src/App.js</code> and save to reload.
-        </p>
-        <button
-          className="App-link"
-          onClick={() => doLogout(false)}
-        >
-          Logout
-        </button>
-      </header>
+
+    <div >
+      <img src={logo} className="App-logo" alt="logo" />
+      <p>
+        FOOOOOOO <code>src/App.js</code> and save to reload.
+      </p>
+      <button
+        className="App-link"
+        onClick={() => doLogout(false)}
+      >
+        Logout
+      </button>
     </div>
+
   );
 }
 const mapStateToProps = state => ({})

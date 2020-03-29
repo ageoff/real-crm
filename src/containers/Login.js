@@ -4,7 +4,7 @@ import '../assets/App.css';
 import { connect } from 'react-redux'
 import { setLoggedIn } from '../redux/user'
 
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, Layout } from 'antd';
 import { useHistory, useLocation } from 'react-router-dom';
 
 const layout = {
@@ -30,42 +30,40 @@ const Login = ({ doLogin }) => {
     console.log('Failed:', errorInfo);
   };
   return (
-
-    <div className="App">
-      <header className="App-header">
+    <Layout>
       <Form
-      {...layout}
-      name="basic"
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-    >
-    <Form.Item
-    label="Username"
-    name="username"
-    rules={[{ required: true, message: 'Please input your username!' }]}
-  >
-    <Input />
-  </Form.Item>
-  <Form.Item
-        label="Password"
-        name="password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
+        {...layout}
+        name="basic"
+        className='loginForm'
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
       >
-        <Input.Password />
-      </Form.Item>
-      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
+        <Form.Item
+          label="Username"
+          name="username"
+          rules={[{ required: true, message: 'Please input your username!' }]}
+          >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+          <Input.Password />
+        </Form.Item>
+        <Form.Item {...tailLayout} name="remember" valuePropName="checked">
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
 
-      <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
+        <Form.Item {...tailLayout}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
       </Form>
-      </header>
-    </div>
+    </Layout>
   );
 }
 

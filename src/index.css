@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #282c34;
+}
+.scrollContent {
+  overflow: auto;
+}
+
+.header {
+	background-color: #001529;
+  display: flex;
+  flex: 1;
+  padding: 0 24px;
+  position: relative;
+  top: 0;
+}
+.innerHeader {
+  display: flex;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  margin: auto;
+  height: 64px;
+  text-align: left;
+  justify-content: space-between;
+}
+.topHeaderLogo {
+  width: 150px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.sideNav {
+  background-color: red;
+  min-height: 100vh;
+}

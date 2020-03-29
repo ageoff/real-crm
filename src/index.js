@@ -1,20 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'antd/dist/antd.css';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import configureStore from './redux/store'
 import Router from './lib/NavRouter'
+import { PersistGate } from 'redux-persist/es/integration/react'
 
 import { createBrowserHistory } from 'history';
 
 const history = createBrowserHistory();
 
-const { store } = configureStore('testing', () => {})
+const { store, persistor } = configureStore('testing', () => {})
+
+const onBeforeLift = async () => {
+
+}
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history} />
+    <PersistGate loading={<p>LOADING</p>} onBeforeLift={onBeforeLift} persistor={persistor}>
+      <Router history={history} />
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );
