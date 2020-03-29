@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Spin, Comment, Form, Input, Button, Avatar } from 'antd'
+import { Comment, Form, Input, Button, Avatar } from 'antd'
 import { loadNotes, addNote } from '../redux/clients'
+import LoadingComponent from './LoadingComponent'
 
 const { TextArea } = Input
 
@@ -15,7 +16,7 @@ const Notes = ({ id }) => {
 		dispatch(loadNotes(id))
 	}, [ id, dispatch ])
 
-	if (loading) return <Spin size="large" />
+	if (loading) return <LoadingComponent white={true} />
 	return (
 		<div>
 			{notes.map((n, i) => (

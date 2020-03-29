@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Spin, Timeline } from 'antd'
+import { Timeline } from 'antd'
 import { geekblue, volcano, green, yellow } from '@ant-design/colors'
 import { loadActivity } from '../redux/clients'
+import LoadingComponent from './LoadingComponent'
 
 const getActivityColor = (type) => {
 	switch (type) {
@@ -26,7 +27,7 @@ const Activities = ({ id }) => {
 		dispatch(loadActivity(id))
 	}, [ id, dispatch ])
 
-	if (loading) return <Spin size="large" />
+	if (loading) return <LoadingComponent white={true} />
 	return (
 		<Timeline>
 			{activities.map((a, i) => (

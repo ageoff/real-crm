@@ -38,7 +38,7 @@ export const loadClients = () => (dispatch, getState) => {
 	console.log('HELLLO')
 	dispatch(setLoadingClients(true))
 	const load = async () => {
-		await sleep(5000)
+		await sleep(2000)
 		dispatch(setClients([
 			{ id: 1, first: 'Joe', last: 'Smith', phone: '9131231234', email: 'joe@gmail.com', address: '123 W Street st. Olathe, KS 66061', status: 'Searching' },
 			{ id: 2, first: 'Jane', last: 'Doe', phone: '9133213322', email: 'jane.smith@gmail.com', address: '123 W Street st. Olathe, KS 66061', status: 'Under Contract' },

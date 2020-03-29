@@ -3,11 +3,12 @@ import '../assets/App.css'
 import { geekblue, volcano, green, yellow } from '@ant-design/colors'
 import { useSelector, useDispatch } from 'react-redux'
 import { loadClient } from '../redux/clients'
-import { Layout, PageHeader, Spin, Result, Card, Row, Col, Divider, Tabs, Tag } from 'antd'
+import { Layout, PageHeader, Result, Card, Row, Col, Divider, Tabs, Tag } from 'antd'
 import { useLocation, Link } from 'react-router-dom'
 import { MailOutlined, PhoneOutlined, EnvironmentOutlined, InfoCircleOutlined } from '@ant-design/icons'
 import Activities from '../components/Activities'
 import Notes from '../components/Notes'
+import LoadingComponent from '../components/LoadingComponent'
 
 const { TabPane } = Tabs
 
@@ -64,7 +65,7 @@ const Clients = () => {
 		dispatch(loadClient(Number(id)))
 	}, [ dispatch, id ])
 
-	if (loading) return <Spin size="large"/>
+	if (loading) return <LoadingComponent />
 	if (client == null) return <Result status="404" title="404" subTitle="Sorry, the client was not found." />
 	return (
 		<Layout>
