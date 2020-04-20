@@ -34,9 +34,9 @@ const EditClient = ({ flipEdit }) => {
 				<Form.Item label="Address" name="address">
 					<Input />
 				</Form.Item>
-				<Form.Item>
+				<Form.Item wrapperCol={{ offset: 2 }}>
 					<Button type="primary" htmlType="submit">Submit</Button>
-					<Button onClick={flipEdit}>Cancel</Button>
+					<Button onClick={flipEdit} style={{ margin: '0 8px' }} >Cancel</Button>
 				</Form.Item>
 			</Form>
 		</div>

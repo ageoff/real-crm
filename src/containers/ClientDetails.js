@@ -94,11 +94,13 @@ const Clients = () => {
 							<p><EnvironmentOutlined style={{ marginRight: 5 }} /> {client.address}</p>
 						</div>
 						<Divider />
-							<ClientStatus />
-						<Divider />
 						<div className="profileDetails">
-							<div><Button type="link" onClick={flipEdit}><EditOutlined style={{ marginRight: 5 }} /> Edit Client</Button></div>
-							<div><Button type="link" danger><DeleteOutlined style={{ marginRight: 5 }} /> Delete Client</Button></div>
+							<ClientStatus />
+						</div>
+						<Divider />
+						<div className="profileActions">
+							<div><Button type="link" onClick={flipEdit} icon={<EditOutlined />}>Edit Client</Button></div>
+							<div><Button type="link" danger icon={<DeleteOutlined />} disabled>Delete Client</Button></div>
 						</div>
 					</Card>
 				</Col>

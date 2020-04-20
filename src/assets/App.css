@@ -77,4 +77,8 @@
 }
 .profileDetails {
   text-align: left;
+	margin-left: 15px;
+}
+.profileActions {
+  text-align: left;
 }
