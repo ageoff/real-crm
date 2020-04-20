@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { setLoggedIn } from '../redux/user'
 import { Form, Input, Button, Avatar } from 'antd'
 import { useLocation, useHistory } from 'react-router-dom'
@@ -8,6 +8,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons'
 const HeaderUtil = ({ authenticated, doLogin }) => {
 	const history = useHistory()
 	const location = useLocation()
+	const user = useSelector(state => state.user)
 	const onFinish = values => {
 		console.log('Success:', values)
 		doLogin(true)
@@ -20,7 +21,10 @@ const HeaderUtil = ({ authenticated, doLogin }) => {
 		console.log('Failed:', errorInfo)
 	}
 	return (
-		authenticated ? <div style={{ alignSelf: 'center' }}><span style={{ color: 'white' }}><Avatar icon={<UserOutlined />}/> Adam Geo</span></div> :
+		authenticated ?
+			<div style={{ alignSelf: 'center', marginRight: 10 }}>
+				<span style={{ color: 'white' }}><Avatar icon={<UserOutlined />}/> {`${user.first} ${user.last}`}</span>
+			</div> :
 			<Form layout="inline" style={{ color: 'white', alignItems: 'center' }}
 				onFinish={onFinish}
 				onFinishFailed={onFinishFailed}>
