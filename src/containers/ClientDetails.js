@@ -10,6 +10,7 @@ import Activities from '../components/Activities'
 import Notes from '../components/Notes'
 import LoadingComponent from '../components/LoadingComponent'
 import EditClient from '../components/EditClient'
+import ClientStatus from '../components/ClientStatus'
 
 const { TabPane } = Tabs
 
@@ -92,6 +93,8 @@ const Clients = () => {
 							<p><PhoneOutlined style={{ marginRight: 5 }}/> {client.phone}</p>
 							<p><EnvironmentOutlined style={{ marginRight: 5 }} /> {client.address}</p>
 						</div>
+						<Divider />
+							<ClientStatus />
 						<Divider />
 						<div className="profileDetails">
 							<div><Button type="link" onClick={flipEdit}><EditOutlined style={{ marginRight: 5 }} /> Edit Client</Button></div>
