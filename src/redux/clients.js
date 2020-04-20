@@ -35,7 +35,6 @@ export const setLoadingNotes = createAction('SET_LOADING_NOTES')
 const sleep = (ms) => (new Promise(resolve => setTimeout(resolve, ms)))
 
 export const loadClients = () => (dispatch, getState) => {
-	console.log('HELLLO')
 	dispatch(setLoadingClients(true))
 	const load = async () => {
 		await sleep(2000)
@@ -52,13 +51,10 @@ export const loadClients = () => (dispatch, getState) => {
 
 export const loadClient = id => (dispatch, getState) => {
 	const load = async () => {
-		console.log('hi')
 		await sleep(2000)
 		const clis = getState().clients.clients
 		const tmep = clis.find(c => (c.id === id))
-		console.log(tmep)
 		dispatch(setSelectedClient(tmep))
-		console.log('yo')
 		dispatch(setLoadingClient(false))
 	}
 	dispatch(setLoadingClient(true))
@@ -67,7 +63,6 @@ export const loadClient = id => (dispatch, getState) => {
 
 export const loadActivity = id => (dispatch, getState) => {
 	const load = async () => {
-		console.log('hi')
 		await sleep(1000)
 		dispatch(setActivity([
 			{ text: 'This is the activity', type: 'severe', time: '03-03-1993 11:12 AM' },
@@ -110,4 +105,12 @@ export const addNote = text => (dispatch, getState) => {
 		type: 'severe',
 		time: '01-02-1999 09:12 AM',
 	}))
+}
+
+export const saveClient = client => (dispatch, getState) => {
+	const clients = [ ...getState().clients.clients ]
+	const index = clients.findIndex(c => c.id === client.id)
+	clients.splice(index, 1, client)
+	dispatch(setClients(clients))
+	dispatch(setSelectedClient(client))
 }

@@ -32,7 +32,7 @@ const columns = [
 
 const routes = [
 	{
-		path: '',
+		path: '/',
 		breadcrumbName: 'Home',
 	},
 	{
@@ -46,7 +46,6 @@ const Clients = () => {
 	const clients = useSelector(state => state.clients.clients)
 	const dispatch = useDispatch()
 	const history = useHistory()
-	console.log(history)
 
 	useEffect(() => {
 		dispatch(loadClients())
@@ -67,7 +66,6 @@ const Clients = () => {
 				rowKey={(record) => (record.first + record.last)}
 				onRow={(record, index) => ({
 					onClick: event => {
-						// dispatch(setSelectedClient(record))
 						history.push({
 							pathname: 'clientdetails',
 							search: '?id=' + record.id,

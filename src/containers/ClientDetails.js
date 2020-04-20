@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../assets/App.css'
 import { geekblue, volcano, green, yellow } from '@ant-design/colors'
 import { useSelector, useDispatch } from 'react-redux'
 import { loadClient } from '../redux/clients'
-import { Layout, PageHeader, Result, Card, Row, Col, Divider, Tabs, Tag } from 'antd'
+import { Layout, PageHeader, Result, Card, Row, Col, Divider, Tabs, Tag, Button } from 'antd'
 import { useLocation, Link } from 'react-router-dom'
-import { MailOutlined, PhoneOutlined, EnvironmentOutlined, InfoCircleOutlined } from '@ant-design/icons'
+import { MailOutlined, PhoneOutlined, EnvironmentOutlined, InfoCircleOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import Activities from '../components/Activities'
 import Notes from '../components/Notes'
 import LoadingComponent from '../components/LoadingComponent'
+import EditClient from '../components/EditClient'
 
 const { TabPane } = Tabs
 
@@ -60,6 +61,9 @@ const Clients = () => {
 	const dispatch = useDispatch()
 	const location = useLocation()
 	const { id } = parseQueryString(location)
+	const [ edit, setEdit ] = useState(false)
+
+	const flipEdit = () => setEdit(!edit)
 
 	useEffect(() => {
 		dispatch(loadClient(Number(id)))
@@ -88,18 +92,25 @@ const Clients = () => {
 							<p><PhoneOutlined style={{ marginRight: 5 }}/> {client.phone}</p>
 							<p><EnvironmentOutlined style={{ marginRight: 5 }} /> {client.address}</p>
 						</div>
+						<Divider />
+						<div className="profileDetails">
+							<div><Button type="link" onClick={flipEdit}><EditOutlined style={{ marginRight: 5 }} /> Edit Client</Button></div>
+							<div><Button type="link" danger><DeleteOutlined style={{ marginRight: 5 }} /> Delete Client</Button></div>
+						</div>
 					</Card>
 				</Col>
 				<Col span={17}>
 					<Card>
-						<Tabs>
-							<TabPane tab="Activity" key="1">
-								<Activities id={id} />
-							</TabPane>
-							<TabPane tab="Notes" key="2">
-								<Notes id={id} />
-							</TabPane>
-						</Tabs>
+						{edit ? <EditClient flipEdit={flipEdit} /> :
+							<Tabs>
+								<TabPane tab="Activity" key="1">
+									<Activities id={id} />
+								</TabPane>
+								<TabPane tab="Notes" key="2">
+									<Notes id={id} />
+								</TabPane>
+							</Tabs>
+						}
 					</Card>
 				</Col>
 			</Row>

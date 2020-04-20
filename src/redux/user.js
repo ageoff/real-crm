@@ -3,6 +3,11 @@ import Agent from '../lib/Agent'
 
 const initialState = {
 	username: '',
+	first: 'Adam',
+	last: 'Geoffrion',
+	email: 'ageoff@gmail.com',
+	phone: '(123) 123 - 4567',
+	address: '123 W Any St.',
 	loginLoading: false,
 	loginStatus: '',
 	loggedIn: false,
